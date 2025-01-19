@@ -1,46 +1,36 @@
+import { DailyPlannerStatus } from '@/enum/dailyPlanner.enum';
 import mongoose, { Document, Schema } from 'mongoose';
-import {IDailyPlanner} from '../interfaces/dailyPlanner.interface'
+import { IDailyPlanner } from '../interfaces/dailyPlanner.interface';
 
-// Mongoose Schema for the daily_planner table
-const dailyPlannerSchema = new Schema<IDailyPlanner>({
-  daily_planner_id: {
-    type: String,
-    required: true,
-    unique: true, // Ensure daily_planner_id is unique
+const dailyPlannerSchema = new Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
   },
-  user_id: {
+  userId: {
     type: String,
-    required: true,
   },
-  weeklyplanner_id: {
+  weeklyPlannerId: {
     type: String,
-    required: true,
   },
   date: {
     type: Date,
-    required: true,
   },
- 
-  subtopic: {
+
+  subTopic: {
     type: String,
-    required: true,
   },
-  activity_type: {
+  activityType: {
     type: String,
-    required: true,
   },
   status: {
-    type: String,
-    required: true,
-    enum: ['completed', 'pending', 'in-progress'], // Enum for status values
+    type: DailyPlannerStatus,
   },
   backlog: {
     type: Boolean,
-    required: true,
-    default: false, // Default to not a backlog
   },
 });
 
-const DailyPlanner = mongoose.model<IDailyPlanner>('DailyPlanner', dailyPlannerSchema);
+const DailyPlannerModel = mongoose.model<IDailyPlanner & Document>('DailyPlanner', dailyPlannerSchema);
 
-export { DailyPlanner, IDailyPlanner };
+export { DailyPlannerModel };
+

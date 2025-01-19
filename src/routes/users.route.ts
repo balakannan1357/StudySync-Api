@@ -1,11 +1,10 @@
-import { User } from '@/interfaces/users.interface';
-import { UserController } from '@controllers/users.controller';
+import { UserController } from '@/controllers/user.controller';
+import { IUser } from '@/interfaces/users.interface';
 import { CreateUserDto } from '@dtos/users.dto';
-import { ValidationMiddleware } from '@middlewares/validation.middleware';
 import { Router } from 'express';
 import { BaseRoute } from './base.route';
 
-export class UserRoute extends BaseRoute<User> {
+export class UserRoute extends BaseRoute<IUser> {
   public path = '/users';
   public router = Router();
   public controller = new UserController();
@@ -13,11 +12,5 @@ export class UserRoute extends BaseRoute<User> {
   constructor() {
     super();
     this.initializeBaseRoutes(this.router, this.path, this.controller, CreateUserDto);
-    this.initializeRoutes();
-  }
-
-  private initializeRoutes() {
-    this.router.post(`${this.path}`, ValidationMiddleware(CreateUserDto), this.controller.createUser);
-    this.router.put(`${this.path}/:id`, ValidationMiddleware(CreateUserDto, 'body', true), this.controller.updateUser);
   }
 }

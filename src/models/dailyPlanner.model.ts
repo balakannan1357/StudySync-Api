@@ -30,7 +30,9 @@ const dailyPlannerSchema = new Schema({
   },
 });
 
-const DailyPlannerModel = mongoose.model<IDailyPlanner & Document>('DailyPlanner', dailyPlannerSchema);
+const DailyPlannerModel = mongoose.model<IDailyPlanner & Document>(
+  'DailyPlanner',
+  dailyPlannerSchema,
+);
 
 export { DailyPlannerModel };
-

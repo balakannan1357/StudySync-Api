@@ -1,13 +1,12 @@
-import { Document } from 'mongoose';
+import { DailyPlannerStatus } from '@/enum/dailyPlanner.enum';
 
-// Interface for the DailyPlanner document
-export interface IDailyPlanner extends Document {
+export interface IDailyPlanner {
   daily_planner_id: string;
   user_id: string;
   weeklyplanner_id: string;
   date: Date;
   subtopic: string;
   activity_type: string;
-  status: 'completed' | 'pending' | 'in-progress'; // Enum for status values
+  status: DailyPlannerStatus;
   backlog: boolean;
 }

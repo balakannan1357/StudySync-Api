@@ -30,4 +30,4 @@ const subtopicSchema = new Schema<ISubtopic>({
 
 const Subtopic = mongoose.model<ISubtopic>('Subtopic', subtopicSchema);
 
-export { Subtopic, ISubtopic };
+export { Subtopic };

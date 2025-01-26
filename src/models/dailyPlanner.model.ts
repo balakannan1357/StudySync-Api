@@ -15,7 +15,6 @@ const dailyPlannerSchema = new Schema({
   date: {
     type: Date,
   },
-
   subTopic: {
     type: String,
   },
@@ -36,3 +35,4 @@ const DailyPlannerModel = mongoose.model<IDailyPlanner & Document>(
 );
 
 export { DailyPlannerModel };
+

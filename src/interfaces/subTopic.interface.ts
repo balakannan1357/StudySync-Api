@@ -1,10 +1,7 @@
-import { Document } from 'mongoose';
-
-// Interface for the Subtopic document
-export interface ISubtopic extends Document {
-  subtopic_id: string;
-  subtopic_name: string;
+export interface ISubTopic {
+  _id: string;
+  name: string;
   subject: string;
-  no_of_hours: number;
-  no_of_sessions: number;
+  noOfHours: number;
+  noOfSessions: number;
 }

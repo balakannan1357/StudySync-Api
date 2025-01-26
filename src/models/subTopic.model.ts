@@ -1,11 +1,11 @@
-import { ISubtopic } from '@/interfaces/subTopic.interface';
+import { ISubTopic } from '@/interfaces/subTopic.interface';
 import mongoose, { Document, Schema } from 'mongoose';
 
-const subtopicSchema = new Schema({
+const subTopicSchema = new Schema({
   _id: {
-    type: String,
+    type: Schema.Types.ObjectId,
   },
-  subtopicName: {
+  name: {
     type: String,
   },
   subject: {
@@ -19,7 +19,6 @@ const subtopicSchema = new Schema({
   },
 });
 
-const Subtopic = mongoose.model<ISubtopic & Document>('Subtopic', subtopicSchema);
+const SubTopicModel = mongoose.model<ISubTopic & Document>('SubTopic', subTopicSchema);
 
-export { ISubtopic, Subtopic };
-
+export { SubTopicModel };

@@ -1,14 +1,14 @@
 import { IsString, IsNumber, Min, IsDate, IsOptional } from 'class-validator';
 
-export class createWeeklyPlannerDto {
+export class CreateWeeklyPlannerDto {
   @IsString()
   userId: string;
 
   @IsString()
-  subtopicId: string;
+  subTopicId: string;
 
   @IsString()
-  subtopicName: string;
+  subTopicName: string;
 
   @IsNumber()
   @Min(0, { message: 'Hours cannot be less than 0' })
@@ -25,18 +25,18 @@ export class createWeeklyPlannerDto {
   weekEndDate: Date;
 }
 
-export class updateWeeklyPlannerDto {
+export class UpdateWeeklyPlannerDto {
   @IsOptional()
   @IsString()
   userId?: string;
 
   @IsOptional()
   @IsString()
-  subtopicId?: string;
+  subTopicId?: string;
 
   @IsOptional()
   @IsString()
-  subtopicName?: string;
+  subTopicName?: string;
 
   @IsOptional()
   @IsNumber()

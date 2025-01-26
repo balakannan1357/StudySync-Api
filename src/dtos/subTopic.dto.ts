@@ -1,11 +1,11 @@
 import { IsString, IsNumber, Min, IsOptional } from 'class-validator';
 
-export class createSubtopicDto {
+export class CreateSubTopicDto {
   @IsString()
   _id: string;
 
   @IsString()
-  subtopicName: string;
+  name: string;
 
   @IsString()
   subject: string;
@@ -19,10 +19,10 @@ export class createSubtopicDto {
   noOfSessions: number;
 }
 
-export class updateSubtopicDto {
+export class UpdateSubTopicDto {
   @IsOptional()
   @IsString()
-  subtopicName?: string;
+  name?: string;
 
   @IsOptional()
   @IsString()

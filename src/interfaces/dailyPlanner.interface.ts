@@ -1,12 +1,12 @@
 import { DailyPlannerStatus } from '@/enum/dailyPlanner.enum';
 
 export interface IDailyPlanner {
-  daily_planner_id: string;
-  user_id: string;
-  weeklyplanner_id: string;
+  _id: string;
+  userId: string;
+  weeklyPlannerId: string;
   date: Date;
-  subtopic: string;
-  activity_type: string;
+  subTopic: string;
+  activityType: string;
   status: DailyPlannerStatus;
   backlog: boolean;
 }

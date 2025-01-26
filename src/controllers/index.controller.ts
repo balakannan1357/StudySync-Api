@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { connection } from 'mongoose';
-
 import { logger } from '@utils/logger';
 
 class IndexController {
@@ -41,7 +40,7 @@ class IndexController {
     }
   };
 
-  private checkHealthMongoDb = () => {
+  private readonly checkHealthMongoDb = () => {
     let dbConnectionState = true;
 
     if (!connection || connection.readyState !== 1) {

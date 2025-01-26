@@ -1,15 +1,12 @@
-import { BaseController } from "./base.controller";
-import { ISubtopic } from "@/interfaces/subTopic.interface";
-import { SubtopicService } from "@/services/subTopic.service";
+import { ISubTopic } from '@/interfaces/subTopic.interface';
+import { SubTopicService } from '@/services/subTopic.service';
 import { Container } from 'typedi';
-import { Request, Response, NextFunction } from 'express';
+import { BaseController } from './base.controller';
 
-export class SubTopicController extends BaseController<ISubtopic> {
-  private readonly _service = Container.get(SubtopicService);
+export class SubTopicController extends BaseController<ISubTopic> {
+  private readonly _service = Container.get(SubTopicService);
   constructor() {
     super();
     this.setService(this._service);
   }
-
-  
 }

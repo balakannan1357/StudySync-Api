@@ -1,12 +1,11 @@
-import { Service } from "typedi";
-import { BaseService } from "./base.service";
-import { Subtopic } from "@/models/subTopic.model";
-import { ISubtopic } from "@/interfaces/subTopic.interface";
+import { ISubTopic } from '@/interfaces/subTopic.interface';
+import { SubTopicModel } from '@/models/subTopic.model';
+import { Service } from 'typedi';
+import { BaseService } from './base.service';
 
 @Service()
-export class SubtopicService extends BaseService<ISubtopic>{
-    constructor()
-    {
-        super(Subtopic);
-    }
+export class SubTopicService extends BaseService<ISubTopic> {
+  constructor() {
+    super(SubTopicModel);
+  }
 }

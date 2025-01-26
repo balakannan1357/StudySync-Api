@@ -8,10 +8,10 @@ const weeklyPlannerSchema = new Schema({
   userId: {
     type: String,
   },
-  subtopicId: {
+  subTopicId: {
     type: String,
   },
-  subtopicName: {
+  subTopicName: {
     type: String,
   },
   noOfHours: {
@@ -28,9 +28,9 @@ const weeklyPlannerSchema = new Schema({
   },
 });
 
-const WeeklyPlanner = mongoose.model<IWeeklyPlanner & Document>(
+const WeeklyPlannerModel = mongoose.model<IWeeklyPlanner & Document>(
   'WeeklyPlanner',
   weeklyPlannerSchema,
 );
 
-export { WeeklyPlanner };
+export { WeeklyPlannerModel };

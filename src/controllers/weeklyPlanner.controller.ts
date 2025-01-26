@@ -1,8 +1,7 @@
-import { BaseController } from "./base.controller";
-import { IWeeklyPlanner } from "@/interfaces/weeklyPlanner.interface";
-import { WeeklyPlannerService } from "@/services/weeklyPlanner.service";
+import { IWeeklyPlanner } from '@/interfaces/weeklyPlanner.interface';
+import { WeeklyPlannerService } from '@/services/weeklyPlanner.service';
 import { Container } from 'typedi';
-import { Request, Response, NextFunction } from 'express';
+import { BaseController } from './base.controller';
 
 export class WeeklyPlannerController extends BaseController<IWeeklyPlanner> {
   private readonly _service = Container.get(WeeklyPlannerService);
@@ -10,6 +9,4 @@ export class WeeklyPlannerController extends BaseController<IWeeklyPlanner> {
     super();
     this.setService(this._service);
   }
-
-  
 }

@@ -1,7 +1,7 @@
 import { IsString, IsDate, IsOptional, IsBoolean, IsEnum } from 'class-validator';
 import { DailyPlannerStatus } from '@/enum/dailyPlanner.enum';
 
-export class createDailyPlannerDto {
+export class CreateDailyPlannerDto {
   @IsString()
   userId: string;
 
@@ -24,7 +24,7 @@ export class createDailyPlannerDto {
   backlog: boolean;
 }
 
-export class updateDailyPlannerDto {
+export class UpdateDailyPlannerDto {
   @IsOptional()
   @IsString()
   userId?: string;

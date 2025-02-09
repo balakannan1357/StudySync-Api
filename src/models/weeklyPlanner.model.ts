@@ -1,36 +1,38 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
 import { IWeeklyPlanner } from '../interfaces/weeklyPlanner.interface';
+import { creatorBaseSchema } from './creatorBase.model';
 
-const weeklyPlannerSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
+const weeklyPlannerSchema = new Schema(
+  {
+    _id: {
+      type: Schema.Types.ObjectId,
+    },
+    userId: {
+      type: String,
+    },
+    subTopicId: {
+      type: String,
+    },
+    subTopicName: {
+      type: String,
+    },
+    noOfHours: {
+      type: Number,
+    },
+    noOfSessions: {
+      type: Number,
+    },
+    weekStartDate: {
+      type: Date,
+    },
+    weekEndDate: {
+      type: Date,
+    },
+    ...creatorBaseSchema,
   },
-  userId: {
-    type: String,
-  },
-  subTopicId: {
-    type: String,
-  },
-  subTopicName: {
-    type: String,
-  },
-  noOfHours: {
-    type: Number,
-  },
-  noOfSessions: {
-    type: Number,
-  },
-  weekStartDate: {
-    type: Date,
-  },
-  weekEndDate: {
-    type: Date,
-  },
-});
-
-const WeeklyPlannerModel = mongoose.model<IWeeklyPlanner & Document>(
-  'WeeklyPlanner',
-  weeklyPlannerSchema,
+  { timestamps: true, collection: 'WeeklyPlanner' },
 );
+
+const WeeklyPlannerModel = model<IWeeklyPlanner & Document>('WeeklyPlanner', weeklyPlannerSchema);
 
 export { WeeklyPlannerModel };

@@ -1,6 +1,7 @@
 import { TimePreference } from '@/enum/timePreference.enum';
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
 import { IUser } from '../interfaces/users.interface';
+import { creatorBaseSchema } from './creatorBase.model';
 
 const timeSlotSchema = new Schema(
   {
@@ -25,37 +26,40 @@ const studyTimeSchema = new Schema(
   },
   { _id: false }, // Prevent creating an _id for the overall studyTime object
 );
-const userSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
+const userSchema = new Schema(
+  {
+    _id: {
+      type: Schema.Types.ObjectId,
+    },
+    name: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    phoneNumber: {
+      type: String,
+    },
+    age: {
+      type: Number,
+    },
+    school: {
+      type: String,
+    },
+    area: {
+      type: String,
+    },
+    timePreference: {
+      type: TimePreference,
+    },
+    studyTime: {
+      type: Schema.Types.Mixed,
+    },
+    ...creatorBaseSchema,
   },
-  name: {
-    type: String,
-  },
-  email: {
-    type: String,
-  },
-  phoneNumber: {
-    type: String,
-  },
-  age: {
-    type: Number,
-  },
-  school: {
-    type: String,
-  },
-  area: {
-    type: String,
-  },
-  timePreference: {
-    type: TimePreference,
-  },
-  studyTime: {
-    type: Schema.Types.Mixed,
-  },
-});
+  { timestamps: true, collection: 'Users' },
+);
 
-const UserModel = mongoose.model<IUser & Document>('User', userSchema);
+const UserModel = model<IUser & Document>('User', userSchema);
 
 export { UserModel };
-

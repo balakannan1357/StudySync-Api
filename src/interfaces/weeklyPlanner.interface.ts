@@ -1,4 +1,6 @@
-export interface IWeeklyPlanner {
+import { ICreatorBase } from "./creatorBase.interface";
+
+export interface IWeeklyPlanner extends ICreatorBase {
   _id: string;
   userId: string;
   subTopicId: string;

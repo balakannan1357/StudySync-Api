@@ -10,13 +10,19 @@ const subTopicSchema = new Schema(
     name: {
       type: String,
     },
+    topic: {
+      type: String,
+    },
+    lesson: {
+      type: String,
+    },
     subject: {
       type: String,
     },
-    noOfHours: {
-      type: Number,
+    description: {
+      type: String,
     },
-    noOfSessions: {
+    duration: {
       type: Number,
     },
     ...creatorBaseSchema,
@@ -27,3 +33,4 @@ const subTopicSchema = new Schema(
 const SubTopicModel = model<ISubTopic & Document>('SubTopic', subTopicSchema);
 
 export { SubTopicModel };
+

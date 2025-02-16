@@ -2,30 +2,23 @@ import { TimePreference } from '@/enum/timePreference.enum';
 import { Document, model, Schema } from 'mongoose';
 import { IUser } from '../interfaces/users.interface';
 import { creatorBaseSchema } from './creatorBase.model';
+import { WeekDay } from '@/enum/weekDay.enum';
 
 const timeSlotSchema = new Schema(
   {
-    time: {
-      type: String,
-    },
-    available: {
-      type: Boolean,
-    },
+    start: { type: String },
+    end: { type: String },
   },
-  { _id: false }, // Prevent creating an _id for each subdocument
+  { _id: false },
 );
+
 const studyTimeSchema = new Schema(
-  {
-    Monday: { type: [timeSlotSchema] },
-    Tuesday: { type: [timeSlotSchema] },
-    Wednesday: { type: [timeSlotSchema] },
-    Thursday: { type: [timeSlotSchema] },
-    Friday: { type: [timeSlotSchema] },
-    Saturday: { type: [timeSlotSchema] },
-    Sunday: { type: [timeSlotSchema] },
-  },
-  { _id: false }, // Prevent creating an _id for the overall studyTime object
+  Object.fromEntries(
+    Object.values(WeekDay).map(day => [day, { type: [timeSlotSchema], default: [] }]),
+  ),
+  { _id: false },
 );
+
 const userSchema = new Schema(
   {
     _id: {
@@ -50,10 +43,11 @@ const userSchema = new Schema(
       type: String,
     },
     timePreference: {
-      type: TimePreference,
+      type: String,
+      enum: TimePreference,
     },
     studyTime: {
-      type: Schema.Types.Mixed,
+      type: studyTimeSchema,
     },
     ...creatorBaseSchema,
   },

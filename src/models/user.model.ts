@@ -1,61 +1,59 @@
 import { TimePreference } from '@/enum/timePreference.enum';
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
 import { IUser } from '../interfaces/users.interface';
+import { creatorBaseSchema } from './creatorBase.model';
+import { WeekDay } from '@/enum/weekDay.enum';
 
 const timeSlotSchema = new Schema(
   {
-    time: {
+    start: { type: String },
+    end: { type: String },
+  },
+  { _id: false },
+);
+
+const studyTimeSchema = new Schema(
+  Object.fromEntries(
+    Object.values(WeekDay).map(day => [day, { type: [timeSlotSchema], default: [] }]),
+  ),
+  { _id: false },
+);
+
+const userSchema = new Schema(
+  {
+    _id: {
+      type: Schema.Types.ObjectId,
+    },
+    name: {
       type: String,
     },
-    available: {
-      type: Boolean,
+    email: {
+      type: String,
     },
+    phoneNumber: {
+      type: String,
+    },
+    age: {
+      type: Number,
+    },
+    school: {
+      type: String,
+    },
+    area: {
+      type: String,
+    },
+    timePreference: {
+      type: String,
+      enum: TimePreference,
+    },
+    studyTime: {
+      type: studyTimeSchema,
+    },
+    ...creatorBaseSchema,
   },
-  { _id: false }, // Prevent creating an _id for each subdocument
+  { timestamps: true, collection: 'Users' },
 );
-const studyTimeSchema = new Schema(
-  {
-    Monday: { type: [timeSlotSchema] },
-    Tuesday: { type: [timeSlotSchema] },
-    Wednesday: { type: [timeSlotSchema] },
-    Thursday: { type: [timeSlotSchema] },
-    Friday: { type: [timeSlotSchema] },
-    Saturday: { type: [timeSlotSchema] },
-    Sunday: { type: [timeSlotSchema] },
-  },
-  { _id: false }, // Prevent creating an _id for the overall studyTime object
-);
-const userSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-  },
-  name: {
-    type: String,
-  },
-  email: {
-    type: String,
-  },
-  phoneNumber: {
-    type: String,
-  },
-  age: {
-    type: Number,
-  },
-  school: {
-    type: String,
-  },
-  area: {
-    type: String,
-  },
-  timePreference: {
-    type: TimePreference,
-  },
-  studyTime: {
-    type: Schema.Types.Mixed,
-  },
-});
 
-const UserModel = mongoose.model<IUser & Document>('User', userSchema);
+const UserModel = model<IUser & Document>('User', userSchema);
 
 export { UserModel };
-

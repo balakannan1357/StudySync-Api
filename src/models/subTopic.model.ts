@@ -1,24 +1,36 @@
 import { ISubTopic } from '@/interfaces/subTopic.interface';
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
+import { creatorBaseSchema } from './creatorBase.model';
 
-const subTopicSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
+const subTopicSchema = new Schema(
+  {
+    _id: {
+      type: Schema.Types.ObjectId,
+    },
+    name: {
+      type: String,
+    },
+    topic: {
+      type: String,
+    },
+    lesson: {
+      type: String,
+    },
+    subject: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    duration: {
+      type: Number,
+    },
+    ...creatorBaseSchema,
   },
-  name: {
-    type: String,
-  },
-  subject: {
-    type: String,
-  },
-  noOfHours: {
-    type: Number,
-  },
-  noOfSessions: {
-    type: Number,
-  },
-});
+  { timestamps: true, collection: 'SubTopics' },
+);
 
-const SubTopicModel = mongoose.model<ISubTopic & Document>('SubTopic', subTopicSchema);
+const SubTopicModel = model<ISubTopic & Document>('SubTopic', subTopicSchema);
 
 export { SubTopicModel };
+

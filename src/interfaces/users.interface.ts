@@ -1,5 +1,6 @@
 import { TimePreference } from '@/enum/timePreference.enum';
 import { WeekDay } from '@/enum/weekDay.enum';
+import { ICreatorBase } from './creatorBase.interface';
 
 export interface ITimeSlot {
   start: string;
@@ -8,7 +9,7 @@ export interface ITimeSlot {
 
 export type IStudyTime = Record<WeekDay, ITimeSlot[]>;
 
-export interface IUser {
+export interface IUser extends ICreatorBase {
   _id: string;
   name: string;
   email: string;

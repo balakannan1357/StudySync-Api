@@ -49,6 +49,9 @@ const userSchema = new Schema(
     studyTime: {
       type: studyTimeSchema,
     },
+    password: {
+      type: String,
+    },
     ...creatorBaseSchema,
   },
   { timestamps: true, collection: 'Users' },

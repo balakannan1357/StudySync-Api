@@ -19,4 +19,5 @@ export interface IUser extends ICreatorBase {
   area: string;
   timePreference: TimePreference;
   studyTime: IStudyTime;
+  password: string;
 }

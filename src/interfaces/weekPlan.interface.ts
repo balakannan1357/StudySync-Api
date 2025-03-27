@@ -16,7 +16,6 @@ export interface ITask {
 export type IWeekTasks = Record<WeekDay, ITask[]>;
 
 export interface IWeekPlan extends ICreatorBase {
-  _id: string;
   userId: string;
   tasks: IWeekTasks;
   weekStartDate: Date;

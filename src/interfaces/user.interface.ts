@@ -10,7 +10,6 @@ export interface ITimeSlot {
 export type IStudyTime = Record<WeekDay, ITimeSlot[]>;
 
 export interface IUser extends ICreatorBase {
-  _id: string;
   name: string;
   email: string;
   phoneNumber: string;

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { Container } from 'typedi';
 import { RequestWithUser } from '@interfaces/auth.interface';
-import { IUser } from '@interfaces/users.interface';
+import { IUser } from '@interfaces/user.interface';
 import { AuthService } from '@services/auth.service';
 
 export class AuthController {

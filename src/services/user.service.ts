@@ -1,4 +1,4 @@
-import { IUser } from '@/interfaces/users.interface';
+import { IUser } from '@/interfaces/user.interface';
 import { UserModel } from '@/models/user.model';
 import { Service } from 'typedi';
 import { BaseService } from './base.service';

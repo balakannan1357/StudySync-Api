@@ -52,7 +52,7 @@ const userSchema = new Schema(
     password: {
       type: String,
     },
-    ...creatorBaseSchema,
+    ...creatorBaseSchema.obj,
   },
   { timestamps: true, collection: 'Users' },
 );

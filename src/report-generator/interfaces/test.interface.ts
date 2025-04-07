@@ -1,21 +1,20 @@
 import { ICreatorBase } from '@/interfaces/creatorBase.interface';
-import { QuestionType } from '../enums/questionType.enum';
+import { QuestionCategory } from '../enums/questionCategory.enum';
 
 export interface ITest extends ICreatorBase {
   name: string;
   date: string;
-  description?: string;
+  course: string;
+  batch: string;
+  exam: string;
+  totalMarks: number;
   questions: IQuestion[];
 }
 
 export interface IQuestion extends ICreatorBase {
-  text: string;
-  options?: IOption[];
-  type: QuestionType;
+  subject: string;
+  chapter: string;
+  topic: string;
+  category?: QuestionCategory;
   maxMarks: number;
-}
-
-export interface IOption extends ICreatorBase {
-  text: string;
-  isCorrect: boolean;
 }

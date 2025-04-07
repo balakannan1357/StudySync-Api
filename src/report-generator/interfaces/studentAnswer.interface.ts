@@ -11,7 +11,5 @@ export interface IStudentAnswer extends ICreatorBase {
 
 export interface IAnswer extends ICreatorBase {
   questionId: string;
-  selectedOptionId?: string;
-  textAnswer?: string;
   marksAwarded: number;
 }

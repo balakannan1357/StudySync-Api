@@ -4,15 +4,13 @@ import { IStudentAnswer } from '../interfaces/studentAnswer.interface';
 
 const AnswerSchema: Schema = new Schema({
   questionId: { type: String, required: true },
-  selectedOptionId: { type: String, required: false },
-  textAnswer: { type: String, required: false },
   marksAwarded: { type: Number, required: true },
 });
 
 const StudentAnswerSchema: Schema = new Schema(
   {
     testId: { type: String, required: true },
-    studentId: { type: String, required: true },
+    studentId: { type: Schema.Types.ObjectId, required: true },
     date: { type: String, required: true },
     answers: { type: [AnswerSchema], required: true },
     totalMarks: { type: Number, required: true },

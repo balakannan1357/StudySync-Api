@@ -3,6 +3,7 @@ import { AuthRoute } from '@routes/auth.route';
 import IndexRoute from '@routes/index.route';
 import { UserRoute } from '@routes/users.route';
 import { ValidateEnv } from '@utils/validateEnv';
+import { ReportRoute } from './report-generator/routes/report.route';
 import { StudentRoute } from './report-generator/routes/student.route';
 import { StudentAnswerRoute } from './report-generator/routes/studentAnswer.route';
 import { TestRoute } from './report-generator/routes/test.route';
@@ -21,6 +22,7 @@ Routes.push(new WeekPlanRoute());
 Routes.push(new TestRoute());
 Routes.push(new StudentAnswerRoute());
 Routes.push(new StudentRoute());
+Routes.push(new ReportRoute());
 
 const app = new App(Routes);
 

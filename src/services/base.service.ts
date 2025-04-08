@@ -1,4 +1,4 @@
-import { HttpException } from '@/exceptions/httpException';
+import { HttpException } from '@/exceptions/HttpException';
 import { Model } from 'mongoose';
 import { Service } from 'typedi';
 

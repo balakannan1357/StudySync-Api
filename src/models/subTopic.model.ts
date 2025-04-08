@@ -25,7 +25,7 @@ const subTopicSchema = new Schema(
     duration: {
       type: Number,
     },
-    ...creatorBaseSchema,
+    ...creatorBaseSchema.obj,
   },
   { timestamps: true, collection: 'SubTopics' },
 );

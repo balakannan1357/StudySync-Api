@@ -3,9 +3,7 @@ config();
 
 export const CREDENTIALS = process.env.CREDENTIALS === 'true';
 export const {
-  DB_HOST,
-  DB_PORT,
-  DB_DATABASE,
+  MONGO_URL,
   NODE_ENV,
   PORT,
   SECRET_KEY,

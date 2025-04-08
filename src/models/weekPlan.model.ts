@@ -59,7 +59,7 @@ const weekPlanSchema = new Schema(
     weekEndDate: {
       type: Date,
     },
-    ...creatorBaseSchema,
+    ...creatorBaseSchema.obj,
   },
   { timestamps: true, collection: 'WeekPlans' },
 );

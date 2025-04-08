@@ -1,5 +1,5 @@
 import { UserController } from '@/controllers/user.controller';
-import { IUser } from '@/interfaces/users.interface';
+import { IUser } from '@/interfaces/user.interface';
 import { CreateUserDto } from '@dtos/users.dto';
 import { Router } from 'express';
 import { BaseRoute } from './base.route';

@@ -1,6 +1,6 @@
 import { TimePreference } from '@/enum/timePreference.enum';
 import { Document, model, Schema } from 'mongoose';
-import { IUser } from '../interfaces/users.interface';
+import { IUser } from '../interfaces/user.interface';
 import { creatorBaseSchema } from './creatorBase.model';
 import { WeekDay } from '@/enum/weekDay.enum';
 
@@ -49,7 +49,10 @@ const userSchema = new Schema(
     studyTime: {
       type: studyTimeSchema,
     },
-    ...creatorBaseSchema,
+    password: {
+      type: String,
+    },
+    ...creatorBaseSchema.obj,
   },
   { timestamps: true, collection: 'Users' },
 );

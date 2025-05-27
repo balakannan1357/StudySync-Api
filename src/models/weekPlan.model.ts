@@ -49,7 +49,7 @@ const weekPlanSchema = new Schema(
     userId: {
       type: String,
     },
-    scheduledTasks: {
+    tasks: {
       type: scheduledTasksSchema,
     },
     weekStartDate: {

@@ -9,7 +9,10 @@ export class WeekPlanService extends BaseService<IWeekPlan> {
     super(WeekPlanModel);
   }
 
-  public async getLatestWeekPlanByUserIdAsync(userId: string): Promise<IWeekPlan> {
-    return await this._model.findOne({ userId }).sort({ weekStartDate: -1 });
+  public async getByWeekStartDate(userId: string, weekStartDate: string): Promise<IWeekPlan> {
+    return await this._model.findOne({
+      userId,
+      weekStartDate,
+    });
   }
 }

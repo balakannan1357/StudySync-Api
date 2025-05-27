@@ -1,8 +1,8 @@
 import { WeekPlanController } from '@/controllers/weekPlan.controller';
+import { CreateWeekPlanDto } from '@/dtos/weekPlan.dto';
+import { IWeekPlan } from '@/interfaces/weekPlan.interface';
 import { Router } from 'express';
 import { BaseRoute } from './base.route';
-import { IWeekPlan } from '@/interfaces/weekPlan.interface';
-import { CreateWeekPlanDto } from '@/dtos/weekPlan.dto';
 
 export class WeekPlanRoute extends BaseRoute<IWeekPlan> {
   public path = '/weekPlan';
@@ -16,6 +16,9 @@ export class WeekPlanRoute extends BaseRoute<IWeekPlan> {
   }
 
   private initializeRoutes(): void {
-    this.router.get(`${this.path}/latest/:userId`, this.controller.getLatestWeekPlanByUserId);
+    this.router.get(
+      `${this.path}/getByWeekStartDate/:weekStartDate`,
+      this.controller.getByWeekStartDate,
+    );
   }
 }

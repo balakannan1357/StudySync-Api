@@ -1,4 +1,4 @@
-import { IsDate, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateWeekPlanDto {
   @IsString()
@@ -6,12 +6,6 @@ export class CreateWeekPlanDto {
 
   @IsNotEmpty()
   scheduledTasks: string;
-
-  @IsDate()
-  weekStartDate: Date;
-
-  @IsDate()
-  weekEndDate: Date;
 }
 
 export class UpdateWeekPlanDto {
@@ -21,12 +15,4 @@ export class UpdateWeekPlanDto {
 
   @IsNotEmpty()
   scheduledTasks: string;
-
-  @IsOptional()
-  @IsDate()
-  weekStartDate?: Date;
-
-  @IsOptional()
-  @IsDate()
-  weekEndDate?: Date;
 }

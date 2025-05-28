@@ -1,12 +1,15 @@
-import { connect, set } from 'mongoose';
-import { NODE_ENV, MONGO_URL } from '@config';
+import { MONGO_URL, NODE_ENV } from '@config';
+import mongoose from 'mongoose';
+
+let isConnected: boolean = false;
 
 export const dbConnection = async () => {
-  const dbConfig = { url: MONGO_URL };
+  if (isConnected) return;
 
   if (NODE_ENV !== 'production') {
-    set('debug', true);
+    mongoose.set('debug', true);
   }
 
-  await connect(dbConfig.url);
+  await mongoose.connect(MONGO_URL);
+  isConnected = true;
 };

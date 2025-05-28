@@ -3,12 +3,14 @@ import { AuthRoute } from '@routes/auth.route';
 import IndexRoute from '@routes/index.route';
 import { UserRoute } from '@routes/users.route';
 import { ValidateEnv } from '@utils/validateEnv';
-import { ReportRoute } from './report-generator/routes/report.route';
-import { StudentRoute } from './report-generator/routes/student.route';
-import { StudentAnswerRoute } from './report-generator/routes/studentAnswer.route';
-import { TestRoute } from './report-generator/routes/test.route';
-import { SubTopicRoute } from './routes/subTopic.route';
-import { WeekPlanRoute } from './routes/weekPlan.route';
+import { ReportRoute } from '../../src/report-generator/routes/report.route';
+import { StudentRoute } from '../../src/report-generator/routes/student.route';
+import { StudentAnswerRoute } from '../../src/report-generator/routes/studentAnswer.route';
+import { TestRoute } from '../../src/report-generator/routes/test.route';
+import { SubTopicRoute } from '../../src/routes/subTopic.route';
+import { WeekPlanRoute } from '../../src/routes/weekPlan.route';
+
+import serverless from 'serverless-http';
 
 ValidateEnv();
 
@@ -26,4 +28,4 @@ Routes.push(new ReportRoute());
 
 const app = new App(Routes);
 
-app.listen();
+export const handler = serverless(app.getServer());
